@@ -88,7 +88,7 @@ impl Connection {
             Frame::Array(_val) => unimplemented!(),
         }
 
-        self.stream.flush().await;
+        let _ = self.stream.flush().await;
 
         Ok(())
     }

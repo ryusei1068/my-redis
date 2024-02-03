@@ -40,7 +40,7 @@ async fn process(socket: TcpStream, db: Db) {
                 Frame::Simple("OK".to_string())
             }
             Get(cmd) => {
-                let mut db = db.lock().unwrap();
+                let db = db.lock().unwrap();
                 if let Some(value) = db.get(cmd.key()) {
                     Frame::Bulk(value.clone().into())
                 } else {
